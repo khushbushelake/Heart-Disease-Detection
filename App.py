@@ -7,8 +7,9 @@ model = joblib.load("KNN_heart.pkl")
 scaler = joblib.load("scaler.pkl")
 expected_columns = joblib.load("columns.pkl")
 
-st.title("Heart Stroke Prediction by Khushbu Shelake")
-st.markdown("Provide the following details to check your heart stroke risk:")
+st.title("Heart Disease Risk Prediction")
+st.caption("Machine Learning-based prediction using KNN | Developed by Khushbu Shelake")
+st.markdown("Enter the following health details to estimate the likelihood of heart disease.")
 
 # Collect user input
 age = st.slider("Age", 18, 100, 40)
@@ -60,6 +61,15 @@ if st.button("Predict"):
 
     # Show result
     if prediction == 1:
-        st.error("⚠️ High Risk of Heart Disease")
+        st.error("⚠️ Higher likelihood of heart disease")
+        st.warning(
+        "Please consult a qualified healthcare professional for proper evaluation."
+        )
     else:
-        st.success("✅ Low Risk of Heart Disease")
+        st.success("✅ Lower likelihood of heart disease")
+
+st.divider()
+
+st.caption(
+    "Disclaimer: This application is developed for educational purposes only "
+    "and should not be used as a substitute for professional medical advice.")
